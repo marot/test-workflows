@@ -18,6 +18,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Run script
         run: ./script.sh
+        shell: bash
       - name: switching from HTTPS to SSH
         run: git remote set-url origin ${{ secrets.ssh }}
       - name: Update file
