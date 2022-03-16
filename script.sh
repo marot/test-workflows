@@ -1,2 +1,2 @@
 #/bin/sh
-echo "Hello from marot/test-workflows from fork"
+echo "Hello from marot/test-workflows from fork2"
