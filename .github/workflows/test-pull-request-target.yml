@@ -1,5 +1,5 @@
 name: Remove environment
-#permissions: read-all
+permissions: read-all
 on:
   pull_request_target:
     types: [opened, synchronize, closed]
