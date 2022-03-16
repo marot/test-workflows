@@ -11,7 +11,7 @@ on:
         description: Choose which PR number to destroy
 jobs:
   test:
-    if: ${{ github.event.inputs.prNumber || github.event.pull_request.head.repo.full_name == 'marot/test-workflows' }}
+    #if: ${{ github.event.inputs.prNumber || github.event.pull_request.head.repo.full_name == 'marot/test-workflows' }}
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout
