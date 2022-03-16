@@ -1,0 +1,33 @@
+name: Remove environment
+permissions: read-all
+on:
+  pull_request_target:
+    types: [opened, synchronize, closed]
+  workflow_dispatch:
+    inputs:
+      prNumber:
+        required: true
+        type: string
+        description: Choose which PR number to destroy
+jobs:
+  test:
+    if: ${{ github.event.inputs.prNumber || github.event.pull_request.head.repo.full_name == 'marot/test-workflows' }}
+    runs-on: ubuntu-18.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Run script
+        run: ./script.sh
+      - name: switching from HTTPS to SSH
+        run: git remote set-url origin ${{ secrets.ssh }}
+      - name: echo ${{ github.event.pull_request.head.ref }} >> ref
+      - name: check for changes
+        run: git status
+      - name: stage changed files
+        run: git add .
+      - name: commit changed files
+        run: git commit -m "Auto updating TODO.txt"
+      - name: fetch from master
+        run: git fetch origin master
+      - name: push code to master
+        run: git push origin HEAD:master
