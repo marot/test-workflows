@@ -16,9 +16,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Run script
-        run: ./script.sh
-        shell: bash
       - name: switching from HTTPS to SSH
         run: |
           git config --global user.name 'Marco Rotili'
